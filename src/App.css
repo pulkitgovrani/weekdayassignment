@@ -1,0 +1,47 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    background-color: green;
+    padding: 100px;
+}
+
+
+.single-dropdown{
+    padding-left: 40px;
+    background-color: aqua;
+}
+
+.jobcontainer{
+    background-color: aqua;
+    display: inline-block;
+    margin: 10px;
+    width: 30%;
+}
+.onejobsection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute items evenly */
+}
+.alljobs{
+    
+}
+
+.companylogo{
+    margin:35px 0px 0px 10px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+
+}
+.jobdetailstop{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+.companyhead{
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    
+}

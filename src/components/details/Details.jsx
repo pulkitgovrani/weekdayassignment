@@ -5,27 +5,34 @@ function Details({
   placeholder = "",
   onChange,
   selectedKey,
-  open,
-  setOpen,
+  changeSelectedState,
+  category
 }) {
+  const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  
   const onInputChange = (e) => {
     setInputValue(e.target.value);
   };
   const onItemSelected = (selectedOption) => {
-      onChange !==undefined && onChange(selectedOption.key);
-      onChange !==undefined && setInputValue(selectedOption.value);
+      onChange !==undefined && onChange(selectedOption);
+      onChange !==undefined && setInputValue(selectedOption);
+      onChange !==undefined && changeSelectedState(category,selectedOption);
+      //console.log(selectedOption.value);
       setOpen(false);
+      
   };
 
   const clearDropdown=()=>{
     setInputValue("");
     onChange("");
+    changeSelectedState(category,"");
+
   }
   const onInputClick=()=>{
     console.log("Working");
     setOpen((prev)=>!prev);
-    console.log(open);
+    //console.log(open);
   }
   return (
     <div className="dropdown-container">
@@ -46,18 +53,20 @@ function Details({
         
       </div>
       <div className={`dropdown ${open ? 'visible': ''}`}>
-        {options.filter((item)=>{
+        {open && options.filter((item)=>{
           const searchItem=inputValue.toLowerCase();
-          const v=item.value.toLowerCase();
+          const v=item.toLowerCase();
           if(!searchItem) return true;
           return v.startsWith(searchItem);
-        }).map((op) => (
+        }).map((op,ind) => (
           <div
-            key={op.key}
+           key={ind}
             onClick={() => onItemSelected(op)}
             className="option"
           >
-            {op.value}
+            {op}
+
+           
           </div>
         ))}
       </div>
